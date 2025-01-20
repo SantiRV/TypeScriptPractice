@@ -61,3 +61,18 @@ function createUser(user: User) {
 
 const Santi = createUser({name: 'Santiago', age: 20, isPro: true, howProIs: 'god'});
 console.log(Santi); // {id: '...', name: 'Santiago', age: 20, isPro: false}
+
+// types indexing
+
+type UserProperties = {
+    isActive: boolean,
+    adress: {
+        city: string,
+        country: string,
+    }
+};
+
+const adressUser: UserProperties['adress'] = { 
+    city: 'Pavia',
+    country: 'Italy'
+};
