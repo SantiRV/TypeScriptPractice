@@ -43,7 +43,9 @@ const canvas = document.getElementById('canvas');
 if (canvas !== null && canvas instanceof HTMLCanvasElement) { 
     // Se comprueba que el elemento exista y que sea de tipo HTMLCanvasElement
     //Si queremos ya en este punto podemos eliminar la comprovacion de que el elemento sea distinto de null
+    
     //if (canvas instanceof HTMLCanvasElement) {
     // const ctx = canvas.getContext('2d')} seria suficiente
+    
     const ctx = (canvas as HTMLCanvasElement).getContext('2d');
 }   
