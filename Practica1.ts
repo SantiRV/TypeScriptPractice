@@ -76,3 +76,56 @@ const adressUser: UserProperties['adress'] = {
     city: 'Pavia',
     country: 'Italy'
 };
+
+const adress = {
+    city: 'Pavia',
+    country: 'Italy'
+};
+
+//type Adress  = typeof adress; //Aqui le decimos que el tipo Adress es igual al tipo de la variable adress
+
+//const adressUser2: Adress = { 
+//    city: 'Zapala',
+//    country: 'Argentina'
+//}; //Aqui vemos como podemos utilizar el tipo Adress para definir una variable
+
+ function createAdress() {
+     return {
+        city: 'Pavia',
+        country: 'Italy'
+     };
+ };
+
+ type Adress = ReturnType<typeof createAdress>; //Aqui le decimos que el tipo Adress es igual al tipo de retorno de la funcion createAdress
+
+ //Arrays
+
+ const avengersArray: string[] = ['Ironman', 'Thor', 'Spiderman']; //Aqui le decimos que el array solo puede contener strings
+
+ avengersArray.push('Hulk'); //Aqui vemos como podemos agregar un nuevo elemento al array
+ //Siempre hay que tener en cuenta que el array es inmutable, por lo que no podemos cambiar el tipo de dato que contiene
+
+ const avengersArray2: (string | number)[] = ['Ironman', 'Thor', 'Spiderman']; //Aqui le decimos que el array puede contener strings o numeros
+
+ avengersArray2.push(4); //Aqui vemos como podemos agregar un nuevo elemento al array
+
+//const gameBoard: string[][] = [
+//    ['X', 'O', 'X'],
+//    ['O', 'X', 'O'],
+//    ['X', 'O', 'X']
+//]; //Aqui vemos como podemos crear un array de arrays
+
+type CellValue = 'X' | 'O' | null;
+type GameBoard = [
+    [CellValue, CellValue, CellValue],
+    [CellValue, CellValue, CellValue],
+    [CellValue, CellValue, CellValue]
+];
+
+const gameBoard: GameBoard = [
+    ['X', 'O', 'X'],
+    ['O', 'X', 'O'],
+    ['X', 'O', 'X']
+]; //Aqui vemos como podemos crear un array de arrays controlando el tipo de dato que contiene,
+//  es decir que solo puede contener 'X', 'O' o null y solo puede tener 3 elementos
+//Una TUPLA es un array de longitud fija y de tipos fijos como vemos en este caso
