@@ -204,15 +204,38 @@ function fn(x: string | number) {
 //Clases
 
 class Avenger {
-    name: string;
-    power: string;
+    readonly name: string;
+    #power: string;
+    private readonly secret: string; // Solo se puede acceder a esta propiedad dentro de la clase por unica vez en la entrada y despues no se puede cambiar
 
-    constructor(name: string, power: string) {
+    constructor(name: string, power: string, secret: string) {
         this.name = name;
-        this.power = power;
+        this.#power = power;
+        this.secret = secret;
     }
 
     attack() {
-        console.log(`${this.name} is attacking with ${this.power}`);
+        console.log(`${this.name} is attacking with ${this.#power}`);
     }
 };
+
+const thor = new Avenger('Thor', 'Mjolnir', 'Thor is a god'); // Creamos un nuevo objeto de la clase Avenger
+
+console.log(thor.name); // Podemos acceder al nombre de thor
+thor.attack(); // Podemos atacar con thor
+
+
+//thor.name = 'Hulk'; // No se puede modificar el nombre ya que es de solo lectura por el readonly}
+//thor.#power --> No se puede acceder a la propiedad power ya que es privada por el # antes del power
+//Tampoco podriamos acceder a la propiedad secret ya que es privada e inmutable
+
+// Tambien podriamos crear una interfaz para la clase Avenger
+
+//interface Avenger {
+//    name: string;
+//    power: string;
+//    secret: string;
+//    attack(): void;
+//}; --> Si Utilizamos la interfaz Avenger, no podriamos utilizar el readonly y el # antes de la propiedad 
+// power. Tambien hay que tener en cuenta que hay que adaptarse a la informacion que tiene la interfaz 
+// sin poder agregar mas propiedades(obviamente que dentro de la interfaz si podriamos agregar, pero por fuera no) 
