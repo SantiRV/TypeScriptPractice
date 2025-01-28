@@ -5,8 +5,9 @@ import { Todo } from './Todo';
 
 interface TodosProps {
     todos: ListOfTodos;
-    onRemoveTodo: (id: number) => void;
+    onRemoveTodo: (id: string) => void;
     onCompleteTodo: ({id, completed}: Pick<TodoType, 'id' | 'completed'>) => void;
+     
 };
 
 export const Todos: React.FC<TodosProps> = ({todos, onRemoveTodo, onCompleteTodo}) => {
@@ -20,6 +21,7 @@ export const Todos: React.FC<TodosProps> = ({todos, onRemoveTodo, onCompleteTodo
                         completed={todo.completed}
                         onRemoveTodo={onRemoveTodo}
                         onCompleteTodo={onCompleteTodo}
+                        
                     />
                 </li>
             ))}

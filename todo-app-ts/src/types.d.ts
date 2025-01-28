@@ -1,5 +1,6 @@
+import { TODO_FILTERS } from './constants';
 export interface Todo  {
-    id: number;
+    id: string ;
     text: string;
     completed: boolean;
 };
@@ -11,3 +12,5 @@ export type TodoCompleted = Pick<Todo, 'completed'>;
 
 
 export type ListOfTodos = Todo[];
+
+export type FilterValues = typeof TODO_FILTERS[keyof typeof TODO_FILTERS]; // Esto sirve por si queremos agregar otro filtro en la const, no tendremos que modificar el código
