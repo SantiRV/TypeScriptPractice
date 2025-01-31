@@ -1,9 +1,10 @@
 import  React,{ useState } from 'react';
 import {Todos} from './components/Todos';
-import { type TodoText, type FilterValues, type Todo as TodoType } from './types';
+import {  type FilterValues, type Todo as TodoType } from './types';
 import { TODO_FILTERS } from './const';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
+import { Copyright } from './components/Copyright';
 
 const mockTodos = [
   {
@@ -63,14 +64,13 @@ const handleRemoveCompleted = (): void => {
   setTodos(newTodos)
 };
 
-const handleaddTodo = ({text}: TodoText): void => {
+const handleaddTodo = (text: string): void => {
   const newTodo = {
     id: crypto.randomUUID(),
     text,
     completed: false
   }
-  const newTodos = [...todos,newTodo]
-  setTodos(newTodos)
+  setTodos([...todos, newTodo])
   
 }
   return (
@@ -92,6 +92,8 @@ const handleaddTodo = ({text}: TodoText): void => {
       onClearCompleted={handleRemoveCompleted}
       filterChange={handleFilterChange}
       />
+
+      <Copyright />
 
     </div>
   )

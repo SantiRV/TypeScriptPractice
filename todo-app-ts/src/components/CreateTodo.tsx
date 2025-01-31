@@ -1,29 +1,30 @@
 import React, { useState } from "react"
-import { TodoText } from "../types"
+
 
 interface TodosProps {
-    addTodo: ({text}: TodoText) => void
+    addTodo: (text: string) => void
 }
 
 export const CreateTodo: React.FC<TodosProps> = ({addTodo}) => {
     const [inputValue, setInputValue] = useState('')
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-        e.preventDefault()
-        addTodo({text: inputValue})
-        setInputValue('')
-    }
+    const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+        if (e.key === 'Enter' && inputValue !== '') {
+            addTodo(inputValue)
+            setInputValue('')
+        }
+    };
 
     return (
-       <form onSubmit={handleSubmit}>
+       
         <input 
         className="new-todo"
         value={inputValue}
         onChange={(e) => {setInputValue(e.target.value)}}
-        onKeyDown={() => {}}
+        onKeyDown={handleKeyDown}
         placeholder="add new task"
         autoFocus
         />
-       </form>
+       
     )
 }

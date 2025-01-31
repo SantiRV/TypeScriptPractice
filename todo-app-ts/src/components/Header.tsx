@@ -1,9 +1,8 @@
 import React from "react";
-import { TodoText } from "../types";
 import { CreateTodo } from "./CreateTodo";
 
 interface TodosProps {
-    addTodo: (text: TodoText) => void
+    addTodo: (text: string) => void
 };
 
 export const Header: React.FC<TodosProps> = ({addTodo}) => {
